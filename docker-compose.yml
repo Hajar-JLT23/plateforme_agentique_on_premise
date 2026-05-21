@@ -3,10 +3,13 @@ services:
     build: .
     container_name: plateforme_agentique
 
+    ports:
+      - "7860:7860"
+
     volumes:
       - .:/app
 
     stdin_open: true
     tty: true
 
-    command: python main.py
+    command: python interface/app.py
