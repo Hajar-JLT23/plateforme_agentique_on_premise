@@ -1,0 +1,18 @@
+[
+  {
+    "text": "paul.bernard@hotmail.com",
+    "type": "EMAIL"
+  },
+  {
+    "text": "03/11/1999",
+    "type": "DATE"
+  },
+  {
+    "text": "Paul Bernard",
+    "type": "NOM"
+  },
+  {
+    "text": "25 avenue de la République à Lyon",
+    "type": "ADRESSE"
+  }
+]

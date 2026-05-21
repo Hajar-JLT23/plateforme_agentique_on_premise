@@ -1,0 +1,22 @@
+[
+  {
+    "text": "claire.dubois@oreal.com",
+    "type": "EMAIL"
+  },
+  {
+    "text": "07 00 00 12 34",
+    "type": "TELEPHONE"
+  },
+  {
+    "text": "10/10/1990",
+    "type": "DATE"
+  },
+  {
+    "text": "Claire Dubois",
+    "type": "NOM"
+  },
+  {
+    "text": "L'Oréal",
+    "type": "ADRESSE"
+  }
+]

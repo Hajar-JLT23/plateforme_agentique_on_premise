@@ -1,0 +1,6 @@
+Dossier utilisateur :
+
+Nom : [NOM]
+Date de naissance : [DATE].
+Numéro de sécurité sociale fictif : [NUMERO_SECURITE_SOCIALE].
+Email : [EMAIL].

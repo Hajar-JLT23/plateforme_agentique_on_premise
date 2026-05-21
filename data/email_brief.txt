@@ -1,0 +1,10 @@
+Contexte :
+Vous avez été contactée par une recruteuse concernant un entretien technique pour un poste en alternance en intelligence artificielle.
+
+Informations à inclure dans l’email :
+
+- remercier la recruteuse pour son retour
+- confirmer votre disponibilité mardi à 10h
+- demander si l’entretien aura lieu en présentiel ou en visioconférence
+- demander si l’entretien sera technique ou RH
+- adopter un ton professionnel

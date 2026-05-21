@@ -1,0 +1,9 @@
+L’intelligence artificielle générative connaît une adoption croissante dans les entreprises. Elle est utilisée pour automatiser plusieurs tâches à faible valeur ajoutée comme la rédaction d’emails, la synthèse documentaire, la production de comptes rendus ou encore la reformulation de contenus internes.
+
+De nombreuses organisations souhaitent intégrer ces outils afin d’améliorer la productivité de leurs collaborateurs et réduire le temps consacré à certaines tâches administratives.
+
+Cependant, plusieurs défis persistent. Les modèles peuvent générer des hallucinations, produire des réponses incohérentes ou divulguer des informations sensibles si leur utilisation n’est pas correctement encadrée.
+
+Pour répondre à ces problématiques, certaines entreprises privilégient désormais l’utilisation de modèles locaux hébergés en interne afin de mieux contrôler leurs données.
+
+L’évaluation de ces modèles devient alors essentielle. Les entreprises doivent mesurer la qualité des réponses, leur fidélité au besoin métier, leur fluidité rédactionnelle ainsi que leur temps de réponse.

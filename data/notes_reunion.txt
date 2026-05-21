@@ -1,0 +1,24 @@
+Réunion projet IA – 12 mai 2026
+
+Participants :
+- tuteur entreprise
+- équipe R&D
+- stagiaire IA
+
+Points abordés :
+- présentation des résultats du cas d’usage anonymisation
+- comparaison des performances de Mistral, Phi3 mini et Llama 3.2
+- lancement du nouveau cas d’usage génération de texte
+- nécessité de construire un dataset de test
+- préparation du benchmark de fin de semaine
+
+Décisions prises :
+- tester quatre tâches principales
+- conserver uniquement des modèles locaux
+- documenter tous les résultats sur GitHub
+
+Actions à réaliser :
+- préparer les prompts
+- créer les fichiers de test
+- développer l’agent
+- lancer les benchmarks jeudi

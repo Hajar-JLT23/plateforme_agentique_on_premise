@@ -1,0 +1,10 @@
+[
+  {
+    "text": "jean.michel@entreprise.com",
+    "type": "EMAIL"
+  },
+  {
+    "text": "+33 6 99 00 09 21",
+    "type": "TELEPHONE"
+  }
+]

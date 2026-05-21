@@ -1,0 +1,18 @@
+[
+  {
+    "text": "jean.dupont@gmail.com",
+    "type": "EMAIL"
+  },
+  {
+    "text": "06 00 12 00 01",
+    "type": "TELEPHONE"
+  },
+  {
+    "text": "Jean Dupont",
+    "type": "NOM"
+  },
+  {
+    "text": "12 rue Victor Hugo à Paris",
+    "type": "ADRESSE"
+  }
+]

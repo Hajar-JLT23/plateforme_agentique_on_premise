@@ -1,0 +1,4 @@
+Madame [NOM] est née le [DATE]
+Elle travaille chez [ADRESSE] 
+Son email professionel est [EMAIL]
+Son téléphone est [TELEPHONE]

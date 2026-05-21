@@ -1,0 +1,3 @@
+Le client [NOM] habite au [ADRESSE].
+Son adresse mail est [EMAIL] 
+Sa dare de naissance est le [DATE]

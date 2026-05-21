@@ -1,0 +1,18 @@
+[
+  {
+    "text": "marie.martin@test.fr",
+    "type": "EMAIL"
+  },
+  {
+    "text": "21/02/1992",
+    "type": "DATE"
+  },
+  {
+    "text": "2920275123456",
+    "type": "NUMERO_SECURITE_SOCIALE"
+  },
+  {
+    "text": "Marie Martin",
+    "type": "NOM"
+  }
+]
