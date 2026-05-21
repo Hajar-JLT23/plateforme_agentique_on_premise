@@ -8,11 +8,11 @@
     "type": "TELEPHONE"
   },
   {
-    "text": "Jean Michel",
-    "type": "NOM"
+    "text": "8 boulevard Saint-Michel, 75006 Paris",
+    "type": "ADRESSE"
   },
   {
-    "text": "8 rue Saint-Michel, 75006 Paris",
-    "type": "ADRESSE"
+    "text": "Jean Michel",
+    "type": "NOM"
   }
 ]

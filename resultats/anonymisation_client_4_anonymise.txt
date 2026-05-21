@@ -2,4 +2,4 @@ Compte-rendu d'appel :
 Interlocuteur :  [NOM]
 Téléphone : [TELEPHONE]
 Email : [EMAIL]
-Adresse : 8 bouelvard Saint-Michel , 75006 Paris 
+Adresse : [ADRESSE] 
