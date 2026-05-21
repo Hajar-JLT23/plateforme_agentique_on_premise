@@ -1,5 +1,5 @@
 Compte-rendu d'appel :
-Interlocuteur :  Jean Michel
+Interlocuteur :  [NOM]
 Téléphone : [TELEPHONE]
 Email : [EMAIL]
 Adresse : 8 bouelvard Saint-Michel , 75006 Paris 

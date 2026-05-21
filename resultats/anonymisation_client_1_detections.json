@@ -8,11 +8,15 @@
     "type": "TELEPHONE"
   },
   {
+    "text": "12 rue Victor Hugo à Paris",
+    "type": "ADRESSE"
+  },
+  {
     "text": "Jean Dupont",
     "type": "NOM"
   },
   {
-    "text": "12 rue Victor Hugo à Paris",
+    "text": "12 rue Victor Hugo, Paris",
     "type": "ADRESSE"
   }
 ]

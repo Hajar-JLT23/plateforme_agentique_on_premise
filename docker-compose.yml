@@ -1,0 +1,12 @@
+services:
+  plateforme-agentique:
+    build: .
+    container_name: plateforme_agentique
+
+    volumes:
+      - .:/app
+
+    stdin_open: true
+    tty: true
+
+    command: python main.py

@@ -276,7 +276,14 @@ Les prochaines améliorations prévues :
 - automatisation complète des benchmarks
 
 ---
+## Packaging Docker
 
+La plateforme peut être construite avec Docker afin de préparer une exécution reproductible en local.
+
+Construction :
+
+```bash
+docker compose build
 # Auteur
 
 Hajar JELTHI

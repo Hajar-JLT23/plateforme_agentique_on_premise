@@ -18,6 +18,23 @@ from config import (
 )
 
 TYPES_LLM_AUTORISES = {"NOM", "ADRESSE"}
+def est_adresse_valide(texte):
+    texte_min = texte.lower()
+
+    mots_adresse = [
+        "rue",
+        "avenue",
+        "boulevard",
+        "bd",
+        "place",
+        "impasse",
+        "chemin"
+    ]
+
+    contient_numero = any(caractere.isdigit() for caractere in texte_min)
+    contient_mot_adresse = any(mot in texte_min for mot in mots_adresse)
+
+    return contient_numero and contient_mot_adresse
 
 
 def creer_modele(nom_modele):
@@ -70,17 +87,49 @@ def nettoyer_reponse_llm(reponse):
     except json.JSONDecodeError:
         return []
 
+    if not isinstance(donnees, list):
+        return []
+
     detections = []
 
     for item in donnees:
-        texte = item.get("text")
-        type_pii = item.get("type")
+        if isinstance(item, list):
+            for sous_item in item:
+                if isinstance(sous_item, dict):
+                    texte = sous_item.get("text")
+                    type_pii = sous_item.get("type")
 
-        if texte and type_pii in TYPES_LLM_AUTORISES:
-            detections.append({
-                "text": texte,
-                "type": type_pii
-            })
+                    if texte and type_pii in TYPES_LLM_AUTORISES:
+                        texte =  texte.strip()
+                        if type_pii == "ADRESSE" and not est_adresse_valide(texte):
+                            continue 
+                        detections.append({
+                            "text": texte,
+                            "type": type_pii
+                        })
+                            
+                            
+                    
+
+        elif isinstance(item, dict):
+            texte = item.get("text")
+            type_pii = item.get("type")
+
+            if texte and type_pii in TYPES_LLM_AUTORISES:
+
+                texte = texte.strip()
+
+                if type_pii == "ADRESSE" and not est_adresse_valide(texte):
+                 continue
+
+                detections.append({
+                 "text": texte,
+                 "type": type_pii
+    })
+    
+                
+                    
+                
 
     return detections
 
@@ -119,7 +168,8 @@ def fusionner_detections(detections_regex, detections_llm):
     deja_vus = set()
 
     for detection in toutes_detections:
-        cle = (detection["text"], detection["type"])
+        cle = (detection["text"].strip(), detection["type"])
+        detection["text"] = detection["text"].strip()
 
         if cle not in deja_vus:
             detections_uniques.append(detection)
