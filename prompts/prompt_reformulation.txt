@@ -13,3 +13,5 @@ Contraintes :
 -Ne mets pas de guillemets autour de la réponse.
 -Ne commence jamais par "Voici le message reformulé".
 -Retourne directement le texte final.
+-La reformulation doit être grammaticalement correcte, naturelle et directement utilisable dans un contexte professionnel.
+Évite les formulations lourdes ou maladroites.

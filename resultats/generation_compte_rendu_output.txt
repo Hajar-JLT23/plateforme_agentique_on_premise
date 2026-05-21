@@ -1,28 +1,38 @@
-**Compte Rendu de la Réunion du Projet IA**
+**Compte Rendu de la Réunion Projet IA du 12 Mai 2026**
 
 **Contexte**
-La réunion du projet IA a eu lieu le 12 mai 2026, visant à discuter des progrès réalisés et des plans pour les étapes suivantes.
+La réunion de ce jour a été organisée pour discuter des progrès du projet IA et prendre des décisions stratégiques pour sa poursuite. La présence de l'équipe R&D, du stagiaire IA et du tuteur entreprise était nécessaire pour assurer la cohérence et la continuité du projet.
 
 **Participants**
-La réunion était présidée par le tuteur entreprise, accompagné de l'équipe R&D et du stagiaire IA.
+La réunion a été composée de :
+
+*   Le tuteur entreprise
+*   L'équipe R&D
+*   Le stagiaire IA
 
 **Points Abordés**
 
-*   **Présentation des résultats du cas d'usage anonymisation**: Les résultats ont été présentés avec succès.
-*   **Comparaison des performances de Mistral, Phi3 mini et Llama 3.2**: Une comparaison minutieuse a été effectuée, permettant une compréhension claire de leurs performances respectives.
-*   **Lancement du nouveau cas d'usage génération de texte**: Ce nouveau cas d'usage est en phase d'avancement, nécessitant un équilibre entre innovation et efficacité.
-*   **Nécessité de construire un dataset de test**: Un dataset robuste est crucial pour évaluer les performances des modèles IA.
-*   **Préparation du benchmark de fin de semaine**: Les préparatifs sont en cours pour assurer une expérience réussie.
+Les sujets suivants ont été abordés pendant la réunion :
+
+1.  **Présentation des résultats du cas d'utilisation anonymisation**
+2.  **Comparaison des performances de Mistral, Phi3 mini et Llama 3.2**
+3.  **Lancement du nouveau cas d'utilisation génération de texte**
+4.  **Nécessité de construire un dataset de test**
+5.  **Préparation du benchmark de fin de semaine**
 
 **Décisions Prises**
 
-*   **Tester quatre tâches principales**: Ces tâches seront testées afin de mieux comprendre les performances des modèles IA.
-*   **Conserver uniquement des modèles locaux**: Cette décision garantit l'efficacité et la sécurité du projet.
-*   **Documenter tous les résultats sur GitHub**: Ce document sera utilisé à venir, permettant une trace claire de progrès.
+Les décisions clés prises lors de la réunion sont :
+
+1.  Tester quatre tâches principales
+2.  Conserver uniquement des modèles locaux
+3.  Documenter tous les résultats sur GitHub
 
 **Actions à Réaliser**
 
-*   **Préparer les prompts**: Les prompts seront soigneusement préparés afin d'obtenir des résultats attendus.
-*   **Créer les fichiers de test**: Ces fichiers sont essentiels pour la validation des performances des modèles.
-*   **Développer l’agent**: L’agent doit être développé et perfectionné pour garantir une efficacité maximale.
-*   **Lancer les benchmarks jeudi**: Les benchmarks seront lancés, permettant de vérifier les progrès.
+Les actions nécessaires pour poursuivre le projet IA sont :
+
+1.  Préparer les prompts
+2.  Créer les fichiers de test
+3.  Développer l'agent
+4.  Lancer les benchmarks jeudi
