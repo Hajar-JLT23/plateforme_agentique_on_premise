@@ -1,0 +1,10 @@
+Bonjour,
+
+Nous n'avons pas encore reçu les documents nécessaires qui sont essentiels à la préparation de notre réunion demain. 
+
+Serait-il possible pour vous d'en transmettre un exemplaire dès que possible afin que nous puissions finir la présentation dans de bonnes conditions ? 
+
+Merci d'anticiper votre retour.
+
+---
+Temps d’exécution : 9.86 sec
