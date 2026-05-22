@@ -1,0 +1,5 @@
+Bonjour,
+Je m'appelle [NOM].
+Mon adresse email est [EMAIL].
+Mon numéro de téléphone est [TELEPHONE].
+J'habite au [ADRESSE].

@@ -1,5 +1,6 @@
 import sys
 import json
+import time
 from pathlib import Path
 
 import gradio as gr
@@ -70,13 +71,6 @@ CUSTOM_CSS = """
     font-size: 14px;
 }
 
-.section-title {
-    font-size: 22px;
-    font-weight: 800;
-    margin-top: 16px;
-    margin-bottom: 8px;
-}
-
 .footer {
     text-align: center;
     color: #9ca3af;
@@ -111,9 +105,32 @@ Décisions : tester quatre tâches, garder modèles locaux, documenter sur GitHu
 Actions : préparer prompts, créer fichiers test, développer agent, lancer benchmark jeudi."""
 
 
+def charger_fichier(fichier):
+    if fichier is None:
+        return ""
+
+    with open(fichier.name, "r", encoding="utf-8") as f:
+        return f.read()
+
+
+def creer_fichiers_export(texte_anonymise, detections_json):
+    dossier_export = Path("resultats") / "exports"
+    dossier_export.mkdir(parents=True, exist_ok=True)
+
+    fichier_txt = dossier_export / "texte_anonymise_export.txt"
+    fichier_json = dossier_export / "detections_export.json"
+
+    fichier_txt.write_text(texte_anonymise, encoding="utf-8")
+    fichier_json.write_text(detections_json, encoding="utf-8")
+
+    return str(fichier_txt), str(fichier_json)
+
+
 def lancer_anonymisation_interface(texte, modele):
-    if not texte.strip():
-        return "Veuillez entrer un texte.", "[]", "0 donnée détectée"
+    if not texte or not texte.strip():
+        return "Veuillez entrer un texte.", "[]", "0 donnée détectée", None, None
+
+    debut = time.time()
 
     try:
         detections_regex = detecter_regex(texte)
@@ -121,14 +138,24 @@ def lancer_anonymisation_interface(texte, modele):
         detections = fusionner_detections(detections_regex, detections_llm)
 
         texte_anonymise = anonymiser_texte(texte, detections)
+        temps_execution = round(time.time() - debut, 2)
 
         json_detections = json.dumps(detections, ensure_ascii=False, indent=2)
-        resume = f"{len(detections)} donnée(s) détectée(s)"
 
-        return texte_anonymise, json_detections, resume
+        resume = (
+            f"{len(detections)} donnée(s) détectée(s) "
+            f"• Temps d’exécution : {temps_execution} sec"
+        )
+
+        fichier_txt, fichier_json = creer_fichiers_export(
+            texte_anonymise=texte_anonymise,
+            detections_json=json_detections
+        )
+
+        return texte_anonymise, json_detections, resume, fichier_txt, fichier_json
 
     except Exception as erreur:
-        return f"Erreur : {erreur}", "[]", "Erreur"
+        return f"Erreur : {erreur}", "[]", "Erreur", None, None
 
 
 def charger_exemple_anonymisation():
@@ -142,12 +169,15 @@ def charger_exemple_generation(tache):
         "Email": EXEMPLE_EMAIL,
         "Compte rendu": EXEMPLE_COMPTE_RENDU
     }
+
     return exemples.get(tache, "")
 
 
 def lancer_generation_interface(tache, contenu, modele):
-    if not contenu.strip():
+    if not contenu or not contenu.strip():
         return "Veuillez entrer un contenu."
+
+    debut = time.time()
 
     prompts = {
         "Résumé": "prompt_resume.txt",
@@ -159,7 +189,14 @@ def lancer_generation_interface(tache, contenu, modele):
     try:
         prompt = lire_fichier(Path("prompts") / prompts[tache])
         resultat = generer(prompt, contenu, modele)
-        return resultat
+
+        temps_execution = round(time.time() - debut, 2)
+
+        return (
+            f"{resultat}\n\n"
+            f"---\n"
+            f"Temps d’exécution : {temps_execution} sec"
+        )
 
     except Exception as erreur:
         return f"Erreur : {erreur}"
@@ -190,12 +227,14 @@ with gr.Blocks(
             <p>Détection hybride Regex + LLM pour masquer les informations personnelles dans des documents texte.</p>
         </div>
         """)
+
         gr.HTML("""
         <div class="metric-card">
             <h3>Agent génération</h3>
             <p>Résumé, reformulation professionnelle, email et compte rendu structuré à partir d’un brief utilisateur.</p>
         </div>
         """)
+
         gr.HTML("""
         <div class="metric-card">
             <h3>Infrastructure locale</h3>
@@ -207,10 +246,15 @@ with gr.Blocks(
 
         with gr.Tab("Anonymisation de documents"):
             gr.Markdown("## Agent d’anonymisation")
-            gr.Markdown("Collez un texte contenant des données personnelles, puis lancez la détection et le masquage automatique.")
+            gr.Markdown("Importez un fichier `.txt` ou collez un texte contenant des données personnelles.")
 
             with gr.Row():
                 with gr.Column(scale=1):
+                    upload_fichier = gr.File(
+                        label="Importer un fichier texte",
+                        file_types=[".txt"]
+                    )
+
                     texte_input = gr.Textbox(
                         label="Texte source",
                         placeholder="Collez ici un texte contenant un nom, un email, un téléphone ou une adresse...",
@@ -244,6 +288,20 @@ with gr.Blocks(
                         lines=10
                     )
 
+                    export_txt = gr.File(
+                        label="Télécharger le texte anonymisé"
+                    )
+
+                    export_json = gr.File(
+                        label="Télécharger les détections JSON"
+                    )
+
+            upload_fichier.change(
+                fn=charger_fichier,
+                inputs=upload_fichier,
+                outputs=texte_input
+            )
+
             btn_exemple_anon.click(
                 fn=charger_exemple_anonymisation,
                 outputs=texte_input
@@ -252,7 +310,13 @@ with gr.Blocks(
             btn_anon.click(
                 fn=lancer_anonymisation_interface,
                 inputs=[texte_input, modele_anon],
-                outputs=[texte_anonymise_output, detections_output, resume_detection]
+                outputs=[
+                    texte_anonymise_output,
+                    detections_output,
+                    resume_detection,
+                    export_txt,
+                    export_json
+                ]
             )
 
         with gr.Tab("Génération de texte"):
