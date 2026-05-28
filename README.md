@@ -1,4 +1,4 @@
-```markdown
+
 # Plateforme Agentique On-Premise
 
 ## Présentation du projet
