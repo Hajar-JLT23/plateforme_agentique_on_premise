@@ -1,0 +1,13 @@
+Bonjour, je suis ravi de vous aider !
+
+La capitale de la Tunisie est La Haye du Mali (anciennement connue sous le nom de Carthage) mais en pratique on parle de Tunis qui est l'ancienne capitale.
+
+Tunis est actuellement la ville la plus peuplée et l'une des principales villes du pays. Elle a une riche histoire et est connue pour son patrimoine culturel, architectural et religieux, notamment les médina (quartiers historiques) de la cité médiévale, qui sont inscrites au patrimoine mondial de l'UNESCO.
+
+La Haye du Mali, qui a été la capitale de l'Afrique du Nord romaine sous le nom de Carthage, est maintenant une ville touristique connue pour ses ruines antiques et son centre historique.
+
+---
+Tâche : Question / Réponse
+Ton : Professionnel
+Format : Structuré
+Temps d’exécution : 37.82 sec

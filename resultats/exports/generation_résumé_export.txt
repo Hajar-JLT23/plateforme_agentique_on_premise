@@ -1,0 +1,4 @@
+L'intelligence artificielle générative est utilisée par les entreprises pour automatiser des tâches telles que la synthèse documentaire et la rédaction d'emails. Cependant, son utilisation pose des problèmes tels que les hallucinations, la confidentialité des données et la qualité des réponses. Pour surmonter ces défis, certaines entreprises optent pour des modèles locaux qui leur permettent de contrôler mieux leurs données.
+
+---
+Temps d’exécution : 14.46 sec
