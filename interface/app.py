@@ -3,11 +3,12 @@ import json
 import time
 from datetime import datetime
 from pathlib import Path
-from agents.agentRaG import lancer_rag
 
-import gradio as gr
-
+# ajouter le dossier projet à sys.path avant d'importer les modules locaux
 sys.path.append(str(Path(__file__).parent.parent))
+
+from agents.agentRaG import lancer_rag
+import gradio as gr
 
 from config import MODELES_DISPONIBLES
 from agents.agent_anonymisation import (
@@ -987,8 +988,6 @@ def comparer_modeles_generation(tache, contenu, modeles_selectionnes):
 
 
 with gr.Blocks(
-    theme=gr.themes.Soft(primary_hue="indigo", neutral_hue="slate"),
-    css=CUSTOM_CSS,
     title="Plateforme Agentique On-Premise"
 ) as app:
 
@@ -1445,5 +1444,7 @@ avant de générer une réponse avec le modèle local.
 
 app.launch(
     server_name="0.0.0.0",
-    server_port=7860
+    server_port=7860,
+    theme=gr.themes.Soft(primary_hue="indigo", neutral_hue="slate"),
+    css=CUSTOM_CSS
 )
