@@ -14,5 +14,9 @@
   {
     "text": "Jean Dupont",
     "type": "NOM"
+  },
+  {
+    "text": "12 rue Victor Hugo Î Paris",
+    "type": "ADRESSE"
   }
 ]

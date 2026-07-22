@@ -1,0 +1,12 @@
+{
+  "anonymisations": 9,
+  "generations": 8,
+  "benchmarks": 13,
+  "exports": 26,
+  "temps_total": 1754.15,
+  "temps_mesures": 30,
+  "modeles": {
+    "llama3.2:3b": 24,
+    "mistral": 6
+  }
+}
