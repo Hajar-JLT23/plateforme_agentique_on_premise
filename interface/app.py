@@ -3,6 +3,7 @@ import json
 import time
 from datetime import datetime
 from pathlib import Path
+from agents.agentRaG import lancer_rag
 
 import gradio as gr
 
@@ -1009,7 +1010,48 @@ with gr.Blocks(
         with gr.Tab("Vue d’ensemble"):
             gr.Markdown("## Vue d’ensemble de la plateforme")
             gr.Markdown("Cette interface présente une plateforme agentique locale intégrant anonymisation, génération de texte, export de résultats, historique et benchmark multi-modèles.")
+        with gr.Tab("Agent RAG"):
+            gr.Markdown("## Agent RAG (Retrieval-Augmented Generation)")
 
+            gr.Markdown(
+                """
+Posez une question.
+
+L'agent recherche d'abord les informations dans la base documentaire locale
+avant de générer une réponse avec le modèle local.
+"""
+            )
+
+            question_rag = gr.Textbox(
+                label="Votre question",
+                lines=5,
+                placeholder="Exemple : Quels modèles sont utilisés dans la plateforme ?"
+            )
+
+            modele_rag = gr.Dropdown(
+                choices=MODELES_DISPONIBLES,
+                value="mistral",
+                label="Modèle"
+            )
+
+            bouton_rag = gr.Button(
+                "Lancer le RAG",
+                variant="primary"
+            )
+
+            reponse_rag = gr.Textbox(
+                label="Réponse",
+                lines=12
+            )
+
+            bouton_rag.click(
+                fn=lancer_rag,
+                inputs=[
+                    question_rag,
+                    modele_rag
+                ],
+                outputs=reponse_rag
+            )
             gr.HTML("""
             <div class="creator-card">
                 <strong>Projet réalisé par :</strong> Hajar JELTHI<br>
@@ -1119,7 +1161,6 @@ with gr.Blocks(
                 fn=scenario_demo,
                 outputs=sortie_scenario
             )
-
         with gr.Tab("Anonymisation de documents"):
             gr.Markdown("## Agent d’anonymisation")
             gr.Markdown("Importez un fichier `.txt` ou collez un texte contenant des données personnelles.")
