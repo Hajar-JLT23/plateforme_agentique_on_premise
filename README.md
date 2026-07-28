@@ -570,14 +570,14 @@ Certaines limites restent présentes :
 - temps de chargement initial des modèles ;
 - précision variable selon les modèles ;
 - absence de mémoire conversationnelle ;
-- absence de RAG avancé ;
+- RAG simple intégré, amélioration possible ;
 - benchmark limité à des tests simples.
 
 ---
 
 # Perspectives d’amélioration
 
-- ajout d’un système RAG ;
+- amélioration du système RAG existant ;
 - support PDF et DOCX ;
 - mémoire conversationnelle ;
 - nouveaux agents IA ;

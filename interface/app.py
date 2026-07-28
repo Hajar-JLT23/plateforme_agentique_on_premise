@@ -1144,6 +1144,12 @@ avant de générer une réponse avec le modèle local.
                 variant="primary"
             )
 
+            contexte_rag = gr.Textbox(
+                label="Contexte retenu",
+                lines=8,
+                interactive=False
+            )
+
             reponse_rag = gr.Textbox(
                 label="Réponse",
                 lines=12
@@ -1155,7 +1161,10 @@ avant de générer une réponse avec le modèle local.
                     question_rag,
                     modele_rag
                 ],
-                outputs=reponse_rag
+                outputs=[
+                    reponse_rag,
+                    contexte_rag
+                ]
             )
 
         with gr.Tab("Anonymisation de documents"):

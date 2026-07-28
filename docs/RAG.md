@@ -9,10 +9,10 @@ Fournir des réponses factuelles ancrées sur une base documentaire locale afin 
 - `agents/agentRaG.py` : implémentation de l'agent RAG.
   - `lire_document_base()` : lit tous les fichiers `.txt` du dossier `base_connaissance/` et retourne un grand texte concaténé.
   - `rechercher_contexte(question)` : recherche par correspondance de mots le(s) paragraphe(s) les plus pertinents. Méthode simple et déterministe (score = nombre de mots communs).
-  - `creer_modele(nom_modele)` : construit un objet `LiteLLMModel` (smolagents) pointant vers Ollama (via `OLLAMA_BASE_URL` dans `config.py`).
-  - `lancer_rag(question, modele)` : assemble un prompt with contexte + question et appelle le modèle pour générer la réponse.
-
-- `interface/app.py` : UI Gradio. Un onglet `Agent RAG` permet de poser une question et d'appeler `lancer_rag`.
+  - `lire_prompt_rag()` : lit le prompt depuis `prompts/prompt_rag.txt` pour séparer le texte de consignes du code.  
+  - `creer_modele(nom_modele)` : construit un objet `LiteLLMModel` (smolagents) pointant vers Ollama (via `OLLAMA_BASE_URL` dans `config.py`).  
+  - `lancer_rag(question, modele)` : assemble un prompt avec le contexte retenu, la question, et appelle le modèle pour générer la réponse. La fonction retourne la réponse et le contexte utilisé.  
+  - `interface/app.py` : UI Gradio. Un onglet `Agent RAG` permet de poser une question, afficher le contexte retenu et obtenir la réponse.
 - `config.py` : contient `OLLAMA_BASE_URL`, `TIMEOUT`, `MODELES_DISPONIBLES`.
 
 ## Flux RAG (haut niveau)
