@@ -4,9 +4,11 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-import gradio as gr
-
+# ajouter le dossier projet à sys.path avant d'importer les modules locaux
 sys.path.append(str(Path(__file__).parent.parent))
+
+from agents.agentRaG import lancer_rag
+import gradio as gr
 
 from config import MODELES_DISPONIBLES
 from agents.agent_anonymisation import (
@@ -986,8 +988,6 @@ def comparer_modeles_generation(tache, contenu, modeles_selectionnes):
 
 
 with gr.Blocks(
-    theme=gr.themes.Soft(primary_hue="indigo", neutral_hue="slate"),
-    css=CUSTOM_CSS,
     title="Plateforme Agentique On-Premise"
 ) as app:
 
@@ -1010,17 +1010,10 @@ with gr.Blocks(
             gr.Markdown("## Vue d’ensemble de la plateforme")
             gr.Markdown("Cette interface présente une plateforme agentique locale intégrant anonymisation, génération de texte, export de résultats, historique et benchmark multi-modèles.")
 
-            gr.HTML("""
-            <div class="creator-card">
-                <strong>Projet réalisé par :</strong> Hajar JELTHI<br>
-                <strong>Formation :</strong> L3 MIAGE — Université Paris Nanterre<br>
-                <strong>Entreprise d’accueil :</strong> Novelis<br>
-                <strong>Contexte :</strong> Stage en développement d’agents IA on-premise
-            </div>
-            """)
-
+            # Dashboard statistiques
             dashboard_stats = gr.HTML(dashboard_stats_html())
 
+            # Status bar
             gr.HTML("""
             <div style="
             background: linear-gradient(135deg,#052e16,#166534);
@@ -1038,6 +1031,7 @@ with gr.Blocks(
             </div>
             """)
 
+            # Robot / aide
             robot_output = gr.HTML(message_robot("accueil"))
 
             with gr.Row(elem_classes="robot-buttons"):
@@ -1066,6 +1060,7 @@ with gr.Blocks(
                 outputs=robot_output
             )
 
+            # Overview three boxes
             with gr.Row():
                 gr.HTML("""
                 <div class="overview-box">
@@ -1118,6 +1113,49 @@ with gr.Blocks(
             btn_scenario.click(
                 fn=scenario_demo,
                 outputs=sortie_scenario
+            )
+
+        with gr.Tab("Agent RAG"):
+            gr.Markdown("## Agent RAG (Retrieval-Augmented Generation)")
+
+            gr.Markdown(
+                """
+Posez une question.
+
+L'agent recherche d'abord les informations dans la base documentaire locale
+avant de générer une réponse avec le modèle local.
+"""
+            )
+
+            question_rag = gr.Textbox(
+                label="Votre question",
+                lines=5,
+                placeholder="Exemple : Quels modèles sont utilisés dans la plateforme ?"
+            )
+
+            modele_rag = gr.Dropdown(
+                choices=MODELES_DISPONIBLES,
+                value="mistral",
+                label="Modèle"
+            )
+
+            bouton_rag = gr.Button(
+                "Lancer le RAG",
+                variant="primary"
+            )
+
+            reponse_rag = gr.Textbox(
+                label="Réponse",
+                lines=12
+            )
+
+            bouton_rag.click(
+                fn=lancer_rag,
+                inputs=[
+                    question_rag,
+                    modele_rag
+                ],
+                outputs=reponse_rag
             )
 
         with gr.Tab("Anonymisation de documents"):
@@ -1404,5 +1442,7 @@ with gr.Blocks(
 
 app.launch(
     server_name="0.0.0.0",
-    server_port=7860
+    server_port=7860,
+    theme=gr.themes.Soft(primary_hue="indigo", neutral_hue="slate"),
+    css=CUSTOM_CSS
 )

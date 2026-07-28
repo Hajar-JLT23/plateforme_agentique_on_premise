@@ -1,0 +1,102 @@
+Plateforme Agentique On-Premise
+
+La plateforme Agentique On-Premise est une solution développée pour exécuter des modèles de langage localement afin de garantir la confidentialité des données et de limiter la dépendance aux services cloud.
+
+Elle repose sur une architecture modulaire composée de plusieurs agents spécialisés capables d'automatiser différentes tâches liées au traitement documentaire.
+
+Technologies utilisées
+
+La plateforme est développée en Python.
+
+L'interface utilisateur est réalisée avec Gradio afin de proposer une interface web simple, intuitive et accessible sans connaissances techniques.
+
+Docker est utilisé pour déployer l'ensemble de la plateforme dans un environnement isolé et reproductible.
+
+Ollama permet d'exécuter localement les modèles de langage sans envoyer les données vers des serveurs externes.
+
+LiteLLM assure la communication entre l'application Python et les modèles exécutés par Ollama.
+
+Smolagents est utilisé pour développer les agents intelligents de la plateforme.
+
+Modèles de langage
+
+La plateforme permet d'utiliser plusieurs modèles de langage locaux.
+
+Les principaux modèles utilisés sont :
+- Mistral
+- Llama 3.2 3B
+- Phi-3 Mini
+
+L'utilisateur peut sélectionner le modèle directement depuis l'interface avant de lancer un traitement.
+
+Agent d'anonymisation
+
+L'agent d'anonymisation détecte automatiquement les données personnelles présentes dans un document.
+
+Les données sensibles détectées peuvent être :
+- nom et prénom
+- adresse électronique
+- numéro de téléphone
+- adresse postale
+
+La détection combine des expressions régulières (Regex) et un modèle de langage local afin d'améliorer la qualité des résultats.
+
+Après analyse, un texte anonymisé est généré.
+
+La plateforme produit également un fichier JSON contenant toutes les entités détectées ainsi qu'un score de confidentialité.
+
+Agent de génération de texte
+
+L'agent de génération permet de produire différents types de contenus.
+
+Les principales fonctionnalités sont :
+- résumé automatique
+- résumé intelligent
+- reformulation
+- génération d'e-mails
+- génération de comptes rendus
+- question-réponse
+
+L'utilisateur peut également choisir le ton de la réponse :
+- professionnel
+- simple
+- pédagogique
+- technique
+- synthétique
+
+Il peut aussi choisir le format de sortie :
+- structuré
+- détaillé
+- court
+- liste à puces
+- réponse directe
+
+Benchmark multi-modèles
+
+La plateforme permet de comparer plusieurs modèles de langage sur une même tâche.
+
+Les critères de comparaison comprennent :
+- temps d'inférence
+- rapidité d'exécution
+- qualité des réponses
+- cohérence des résultats
+
+Un tableau comparatif est généré automatiquement.
+
+Architecture
+
+Le fonctionnement global de la plateforme est le suivant :
+
+Utilisateur → Interface Gradio → Agent IA → LiteLLM → Ollama → Modèle de langage local → Résultat.
+
+Confidentialité
+
+Toutes les données restent sur la machine locale.
+
+Aucune information n'est envoyée vers une API externe.
+
+Cette architecture permet de répondre aux exigences de confidentialité des entreprises manipulant des données sensibles.
+
+Objectif du projet
+
+Le projet vise à démontrer qu'une plateforme d'IA générative peut fonctionner entièrement en local tout en proposant plusieurs cas d'usage concrets comme l'anonymisation, la génération de texte et la comparaison de modèles.
